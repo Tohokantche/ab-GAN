@@ -26,18 +26,18 @@ pip install -r requirements.txt
 Train model with experiment configuration
 ```yaml
 # default
-python run.py experiment=train_mnist_gan.yaml
+python run.py experiment=train_cifar10_gan.yaml
 
 # train on CPU
-python run.py experiment=train_mnist_gan.yaml trainer.gpus=0
+python run.py experiment=train_cifar10_gan.yaml trainer.gpus=0
 
 # train on GPU
-python run.py experiment=train_mnist_gan.yaml trainer.gpus=1
+python run.py experiment=train_cifar10_gan.yaml trainer.gpus=1
 ```
 
 You can override any parameter from command line like this
 ```yaml
-python run.py experiment=train_mnist_gan.yaml trainer.max_epochs=20 datamodule.batch_size=32
+python run.py experiment=train_cifar10_gan.yaml trainer.max_epochs=200 datamodule.batch_size=32
 ```
 ## 📜  License
 
