@@ -35,7 +35,7 @@ python run.py experiment=train_cifar10_gan.yaml trainer.gpus=0
 python run.py experiment=train_cifar10_gan.yaml trainer.gpus=1
 ```
 
-You can override any parameter from command line like this
+You can override any parameter from command line like this.
 ```yaml
 python run.py experiment=train_cifar10_gan.yaml trainer.max_epochs=200 datamodule.batch_size=32
 ```
