@@ -1,0 +1,8 @@
+model_checkpoint:
+  _target_: pytorch_lightning.callbacks.ModelCheckpoint
+  monitor: null
+  dirpath: "ckpts"
+  filename: "{step:09d}"
+  every_n_train_steps: 2000
+  save_top_k: -1
+  save_last: True

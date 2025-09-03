@@ -1,0 +1,24 @@
+_target_: src.models.mnist_gan_model.MNISTGANModel
+
+# LS, abLoss
+objective_type : "abLoss"
+lr: 0.0002
+b1: 0.5
+b2: 0.999
+n_classes: 10
+latent_dim: 100
+channels: 1
+img_size: 32
+
+generator:
+  _target_: src.models.modules.generators.GeneratorCNN
+  n_classes: 10
+  latent_dim: 100
+  channels: 1
+
+discriminator:
+  _target_: src.models.modules.discriminators.DiscriminatorCNN
+  n_classes: 10
+  channels: 1
+  img_size: 28
+  sn: True

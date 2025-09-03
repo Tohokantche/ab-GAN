@@ -1,0 +1,24 @@
+# @package _global_
+
+# to execute this experiment run:
+# python run.py experiment=train_mnist_gan.yaml
+
+defaults:
+  - override /trainer: default.yaml # choose trainer from 'configs/trainer/'
+  - override /model: mnist_gan_model.yaml
+  - override /datamodule: mnist_datamodule.yaml
+  - override /callbacks: default.yaml
+  - override /logger: wandb.yaml
+
+# all parameters below will be merged with parameters from default configurations set above
+# this allows you to overwrite only specified parameters
+
+seed: 12345
+
+trainer:
+  gpus: 0
+  max_epochs: 20
+
+datamodule:
+  batch_size: 64
+  train_val_test_split: [55_000, 5_000, 10_000]

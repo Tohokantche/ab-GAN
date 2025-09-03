@@ -1,0 +1,26 @@
+_target_: src.models.cifar10_gan_model.CIFAR10GANModel
+
+# LS, abLoss
+objective_type : "abLoss"
+lr: 0.0002
+b1: 0.5
+b2: 0.999
+n_classes: 10
+latent_dim: 100
+channels: 3
+img_size: 32
+
+# TODO: instantiate the generator and discriminator objects with Hydra
+#       https://hydra.cc/docs/advanced/instantiate_objects/overview/
+generator:
+  _target_: src.models.modules.generators.GeneratorC10
+  z_dim: 100
+  channels: 3
+
+
+discriminator:
+  _target_: src.models.modules.discriminators.DiscriminatorC10
+  channels: 3
+  leak: 0.1
+  w_g: 4
+  sn: True
