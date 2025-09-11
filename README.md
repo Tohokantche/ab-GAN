@@ -9,6 +9,10 @@
 
 </div>
 
+This repository contains code for our paper: "αβ-GAN: Robust generative adversarial networks"
+
+- [Paper Link](https://www.sciencedirect.com/science/article/abs/pii/S0020025522001128)
+  
 ## Abstract
 >Generative adversarial networks (GAN) training is subject to problems including mode collapse, gradient vanishing, and instability. Although many different losses have been proposed to alleviate these shortcomings, they heavily rely on a fixed-value function with limited expressive power in terms of robustness, whereby failing to perform consistently over multiple data sets. To solve this problem, we propose a parametric and robust αβ-loss function that can improve the performances of GAN on different data sets. Specifically, unlike standard GAN loss function it exploits the αβ-divergence (AB-divergence) to weigh the likelihood ratio associated with each data point. This weighing mechanism makes the model robust to noises and yields better models in terms of FID score. To reduce the cost of searching for the optimal and, we further propose an adaptive version to systematically update these parameters according to statistics of the discriminator’s output. Moreover, αβ-loss can be reduced to Least-Square GAN (LS-GAN) and standard GAN (SGAN) loss function as special cases. We conduct extensive experiments on both synthetic and real-world data sets. Experimental results over the synthetic data sets (2D Gaussian ring and grid) demonstrate that our approach can significantly alleviate the issue of mode collapse. Additionally, by constraining the gradient of the discriminator that is fed back to the generator via finely adjusting the hyper-parameters α and β, our approach can improve the quality of synthetic images, as can be seen from the decrease of FID from 40 to 23.71 on the data set CIFAR10 using the SN-DCGAN architecture.
 
