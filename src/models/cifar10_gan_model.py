@@ -134,7 +134,6 @@ class CIFAR10GANModel(LightningModule):
         return log_dict, loss
 
     def on_epoch_end(self):
-        #  Implement functionality to log predicted images to wandb
         
         #  Create fake images
         gen_data = self.generator(self.fixed_noise, self.fixed_label)
