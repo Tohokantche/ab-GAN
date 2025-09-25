@@ -63,7 +63,6 @@ class CIFAR10GANModel(LightningModule):
         return None
 
     def test_step(self, batch, batch_idx) -> Union[Tensor, Dict[str, Any], None]:
-        #  if you have time, try implementing a test step
         log_dict, loss = self.step(batch, batch_idx)
         self.log_dict({"/".join(("test", k)): v for k, v in log_dict.items()})
         return None
