@@ -86,13 +86,6 @@ class CIFAR10GANModel(LightningModule):
         return n
 
     def step(self, batch, batch_idx, optimizer_idx=None) -> Tuple[Dict[str, Tensor], Optional[Tensor]]:
-        #  implement the step method of the GAN model.
-        #     : This function should return both a dictionary of losses
-        #     : and current loss of the network being optimised.
-        #     :
-        #     : When training with pytorch lightning, because we defined 2 optimizers in
-        #     : the `configure_optimizers` function above, we use the `optimizer_idx` parameter
-        #     : to keep a track of which network is being optimised.
 
         imgs, labels = batch
         batch_size = imgs.shape[0]
@@ -110,9 +103,8 @@ class CIFAR10GANModel(LightningModule):
         gen_input_labels = Variable(labels)
 
         if optimizer_idx == 0 or not self.training:
-            #  generate images and calculate the adversarial loss for the generator
-            # HINT: when optimizer_idx == 0 the model is optimizing the generator
-            #raise NotImplementedError
+            #  Generate images and calculate the adversarial loss for the generator
+            #  When optimizer_idx == 0 the model is optimizing the generator
 
             #  Generate a batch of images
             gen_data = self.generator(noise_data, gen_input_labels)
@@ -123,9 +115,8 @@ class CIFAR10GANModel(LightningModule):
             log_dict["g_loss"] = loss.item()
 
         if optimizer_idx == 1 or not self.training:
-            #  generate images and calculate the adversarial loss for the discriminator
-            # HINT: when optimizer_idx == 1 the model is optimizing the discriminator
-            # raise NotImplementedError
+            #  Generate images and calculate the adversarial loss for the discriminator
+            #  When optimizer_idx == 1 the model is optimizing the discriminator
 
             #  Generate a batch of images
             gen_data = self.generator(noise_data, gen_input_labels)
@@ -143,15 +134,13 @@ class CIFAR10GANModel(LightningModule):
         return log_dict, loss
 
     def on_epoch_end(self):
-        #  implement functionality to log predicted images to wandb
-        #     : at the end of each epoch
-
+        #  Implement functionality to log predicted images to wandb
+        
         #  Create fake images
         gen_data = self.generator(self.fixed_noise, self.fixed_label)
         for logger in self.trainer.logger:
             if type(logger).__name__ == "WandbLogger":
-                #  log fake images to wandb (https://docs.wandb.ai/guides/track/log/media)
-                #     : replace `None` with your wandb Image object
+                #  Log fake images to wandb (https://docs.wandb.ai/guides/track/log/media)
 
                 grid = make_grid(gen_data, nrow=8, padding=2, normalize=True)
                 image = grid.permute(1, 2, 0).data.numpy()
